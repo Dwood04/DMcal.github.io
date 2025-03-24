@@ -1,0 +1,322 @@
+:root {
+    --main-color: hotpink;
+    --calB: pink;
+    --back: white;
+    --back2: rgb(252, 215, 247);
+    --element: grey ;
+    --element2: #333333 ;
+}
+h1 {
+
+    display: felx;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+
+body{
+
+    /* bet you cant guess what this does */
+    background-color: var(--calB);
+
+}
+
+/* for the calendar table */
+table {
+
+    border-collapse: collapse;
+    background-color: var(--back2);
+    color: black;
+    align-content: center;
+    margin-right: auto;
+
+}
+
+th {
+
+    background-color: var(--back2);
+    color: black;
+
+}
+
+.headers {
+
+    display: flex;
+    justify-content:space-between;
+    text-align: center;
+
+}
+
+.calendar-header {
+
+    padding-left: 240px;
+    text-align: center;
+
+}
+
+.task-header {
+
+    padding-right: 100px;
+    padding-left: 400px;
+    text-align: center;
+    
+}
+
+.container {
+
+    display: flex;
+    justify-content: space-between; 
+
+}
+
+.todo-list{
+
+    justify-content: center;
+
+}
+
+.calendar{
+
+    margin-right: 20px;
+
+}
+
+.date-btn {
+
+    background-color: var(--back2);
+    border-color: black;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display:grid;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--back);
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.calendar, .task-list {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: var(--back);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2 {
+    text-align: center;
+    color:  var(--main-color);
+}
+.calendar-header, .task-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.calendar-header h2, .task-header h2 {
+    flex: 1;
+    text-align: center;
+}
+.hamburger-menu {
+    position: absolute;
+    left: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    border: 1px solid var(--back);
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: var(--back);
+}
+.date-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: var(--back);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.date-btn:hover {
+    background-color: var(--back);
+}
+.todo-panel {
+    border: 1px solid var(--back);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: var(--back);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+.todo-panel:hover {
+    background-color:  var(--back);
+}
+.todo-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 2px solid var(--main-color);
+}
+.todo-desc {
+    margin-bottom: 5px;
+}
+.todo-date {
+    text-align: left;
+    font-size: 0.9em;
+    color: var(--element);
+}
+.todo-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.todoList form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+.todoList input, .todoList button {
+    padding: 10px;
+    border: 1px solid var(--back);
+    border-radius: 5px;
+}
+.todoList button {
+    background-color: var(--main-color);
+    color: var(--back);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.todoList button:hover {
+    background-color:  var(--main-color);
+}
+.testButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.testButtons button {
+    padding: 10px;
+    border: 1px solid var(--back);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.testButtons button:hover {
+    background-color: var(--back);
+}
+#optionsPanel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: var(--back);
+    border: 1px solid var(--back);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+#optionsPanel h3 {
+    margin-top: 0;
+    color: var(--main-color);
+}
+#optionsPanel label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#optionsPanel input, #optionsPanel textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--back);
+    border-radius: 5px;
+}
+#optionsPanel button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: var(--back);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#optionsPanel button:hover {
+    background-color: var(--main-color);
+}
+#optionsPanel .cancel-btn {
+    background-color: var(--back);
+    color: var(--element2);
+}
+#optionsPanel .cancel-btn:hover {
+    background-color: var(--back);
+}
+.hamburger-menu button {
+    background-color: var(--main-color);
+    color: var(--back);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hamburger-menu-content {
+    display: none;
+    position: absolute;
+    background-color: var(--back);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.hamburger-menu-content select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hamburger-menu-content select:hover {
+    background-color: var(--back);
+}
+.hamburger-menu-content button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: var(--back);
+    cursor: pointer;
+}
+.hamburger-menu-content button:hover {
+    background-color: var(--main-color);
+}
+.hamburger-menu:hover .hamburger-menu-content {
+    display: block;
+}
