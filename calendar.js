@@ -127,8 +127,6 @@ function updateCalendarColors() {
   });
 }
 
-
-
 function changeMonthDropdown() {
   currentMonth = parseInt(document.getElementById("monthSelect").value);
   updateCalendar();
@@ -180,3 +178,70 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("monthSelect").value = currentMonth;
   updateCalendar();
 });
+
+function exportToICS() {
+  let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//YourSite//TaskCalendar//EN\n";
+
+  TaskList.forEach(task => {
+    const startDate = new Date(task.date).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; // Format as YYYYMMDDTHHMMSSZ
+    icsContent += `BEGIN:VEVENT\n`;
+    icsContent += `UID:${Date.now()}-${Math.random().toString(36).substring(2)}@yoursite.com\n`;
+    icsContent += `DTSTAMP:${startDate}\n`;
+    icsContent += `DTSTART:${startDate}\n`;
+    icsContent += `SUMMARY:${task.title}\n`;
+    icsContent += `DESCRIPTION:${task.desc}\n`;
+    icsContent += `END:VEVENT\n`;
+  });
+
+  icsContent += "END:VCALENDAR";
+
+  // Create a downloadable file
+  const blob = new Blob([icsContent], { type: "text/calendar" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "tasks.ics";
+  link.click();
+}
+
+function importFromICS(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const icsContent = e.target.result;
+    const events = parseICS(icsContent);
+
+    events.forEach(event => {
+      const todo = new Todo(event.title, event.date, event.description);
+      TaskList.push(todo);
+    });
+
+    displayAllTodos();
+    updateCalendarColors();
+  };
+  reader.readAsText(file);
+}
+
+function parseICS(icsContent) {
+  const events = [];
+  const lines = icsContent.split(/\r?\n/);
+  let currentEvent = {};
+
+  lines.forEach(line => {
+    if (line.startsWith("BEGIN:VEVENT")) {
+      currentEvent = {};
+    } else if (line.startsWith("END:VEVENT")) {
+      events.push(currentEvent);
+    } else if (line.startsWith("SUMMARY:")) {
+      currentEvent.title = line.replace("SUMMARY:", "").trim();
+    } else if (line.startsWith("DESCRIPTION:")) {
+      currentEvent.description = line.replace("DESCRIPTION:", "").trim();
+    } else if (line.startsWith("DTSTART:")) {
+      const date = line.replace("DTSTART:", "").trim();
+      currentEvent.date = new Date(date.substring(0, 4), date.substring(4, 6) - 1, date.substring(6, 8)).toISOString().split("T")[0];
+    }
+  });
+
+  return events;
+}

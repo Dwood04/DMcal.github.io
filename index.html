@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,7 +87,8 @@
 
 <div class="testButtons">
     <button onclick="displayAllTodos()">Display All</button>
-    
+    <button onclick="exportToICS()">Export to ICS</button>
+    <input type="file" id="icsFileInput" accept=".ics" onchange="importFromICS(event)">
 </div>
 
 <script src="calendar.js"></script>
